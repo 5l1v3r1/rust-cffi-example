@@ -1,0 +1,8 @@
+[package]
+authors = ["user"]
+name = "rs"
+version = "0.1.0"
+build = "build.rs"
+
+[dependencies]
+libc = "0.2.34"

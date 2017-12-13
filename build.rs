@@ -1,13 +1,18 @@
 use std::process::Command;
-use std::env;
 use std::path::Path;
 
 fn main() {
-    //let out_dir = env::var("OUT_DIR").unwrap();
 	let out_dir = "src";
-	
-    // note that there are a number of downsides to this approach, the comments
-    // below detail how to improve the portability of these commands.
+
+	/*For OSX
+	    Command::new("o64-clang").args(&["src/hello.c", "-c", "-fPIC", "-o"])
+                       .arg(&format!("{}/hello.o", out_dir))
+                       .status().unwrap();
+    Command::new("x86_64-apple-darwin15-ar").args(&["crus", "libhello.a", "hello.o"])
+                      .current_dir(&Path::new(&out_dir))
+                      .status().unwrap();
+	*/
+	//For Linux
     Command::new("gcc").args(&["src/hello.c", "-c", "-fPIC", "-o"])
                        .arg(&format!("{}/hello.o", out_dir))
                        .status().unwrap();
